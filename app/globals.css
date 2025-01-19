@@ -3,25 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: #ff9900;
+  --primary-dark: #e68a00;
+  --secondary: #232f3e;
+  --secondary-dark: #131921;
+  --accent: #37475a;
+  --background: #f3f3f3;
+  --text: #333333;
+  --text-light: #ffffff;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.hover-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.hover-secondary:hover {
+  background-color: var(--accent);
 }
