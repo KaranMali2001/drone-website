@@ -1,8 +1,12 @@
 import { DynamicShowcase } from "@/components/dynamic-showcase";
-import { FeaturedProducts } from "@/components/featured-products";
 import { Footer } from "@/components/footer";
+import { CardsDesign } from "@/components/grid-category";
+
 import MainNavbar from "@/components/mainNavBar";
-import { ServicesCards } from "@/components/services";
+import { PaymentShowcase } from "@/components/payment";
+import Requirement from "@/components/requirement";
+import { ServicesShowcase } from "@/components/servicesSection";
+
 import TopNavbar from "@/components/topNavBar";
 
 export default function Home() {
@@ -11,8 +15,10 @@ export default function Home() {
       <TopNavbar />
       <MainNavbar />
       <DynamicShowcase />
-      <FeaturedProducts />
-      <ServicesCards />
+      <CardsDesign />
+      <ServicesShowcase />
+      <Requirement />
+      <PaymentShowcase />
       <Footer />
     </>
   );

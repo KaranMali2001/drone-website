@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const products = [
   {
@@ -30,6 +31,7 @@ const products = [
 
 export function DynamicShowcase() {
   const [activeProduct, setActiveProduct] = useState(0);
+  const [activeVariant] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,56 +40,76 @@ export function DynamicShowcase() {
     return () => clearInterval(timer);
   }, []);
 
+  const variants = [
+    <CarouselVariant key="carousel" activeProduct={activeProduct} />,
+  ];
+
   return (
-    <div className="min-h-screen bg-white pt-24 text-black">
-      <div className="container mx-auto h-full px-4">
-        <div className="flex flex-col items-center justify-center ">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-all duration-700 flex flex-col md:flex-row items-center justify-center gap-12 text- ${
-                index === activeProduct
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-95"
-              }`}
-            >
-              <div className="relative h-[400px] w-full md:w-1/2 max-w-xl">
-                <Image
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.title}
-                  fill
-                  className="object-contain bg-purple-600"
-                  priority
-                />
-              </div>
-              <div className="w-full md:w-1/2 max-w-xl text-center md:text-left">
-                <div className="text-text-light">
-                  <h2 className="text-5xl font-bold mb-6">{product.title}</h2>
-                  <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                    {product.description}
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 mb-8">
-                    {product.specs.map((spec, i) => (
-                      <div
-                        key={i}
-                        className="p-4 bg-accent rounded-lg text-center text-text-light"
-                      >
-                        {spec}
-                      </div>
-                    ))}
-                  </div>
-                  <Button
-                    size="lg"
-                    className="bg-primary hover-primary text-text"
-                  >
-                    Learn More
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section className="bg-white text-black ">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center mb-8">
+          {/* <h2 className="text-3xl font-bold">Drone Showcase</h2> */}
+          {/* <Button onClick={() => setActiveVariant((prev) => (prev + 1) % 3)}>
+            Switch Variant
+          </Button> */}
         </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeVariant}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {variants[activeVariant]}
+          </motion.div>
+        </AnimatePresence>
       </div>
+    </section>
+  );
+}
+//@ts-expect-error //will fix this
+
+function CarouselVariant({ activeProduct }) {
+  return (
+    <div className="relative h-[600px] overflow-hidden">
+      {products.map((product, index) => (
+        <motion.div
+          key={index}
+          className={`absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-8`}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{
+            opacity: index === activeProduct ? 1 : 0,
+            x: index === activeProduct ? 0 : 100,
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="relative h-[300px] w-full md:h-[400px] md:w-1/2">
+            <Image
+              src={product.image || "/placeholder.svg"}
+              alt={product.title}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h3 className="text-4xl font-bold mb-4">{product.title}</h3>
+            <p className="text-lg mb-6">{product.description}</p>
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              {product.specs.map((spec, i) => (
+                <div
+                  key={i}
+                  className="p-2 bg-gray-100 rounded-lg text-center text-sm"
+                >
+                  {spec}
+                </div>
+              ))}
+            </div>
+            <Button>Learn More</Button>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 }
