@@ -69,7 +69,7 @@ export function CardsDesign() {
               <h4 className="text-2xl font-medium text-center">
                 {subcategory.name}
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 px-4 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {subcategory.products.map((product) => (
                   <div
                     key={product.title}
