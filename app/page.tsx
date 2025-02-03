@@ -1,6 +1,6 @@
 import { DynamicShowcase } from "@/components/dynamic-showcase";
 import { Footer } from "@/components/footer";
-import { CardsDesign } from "@/components/grid-category";
+import CardsDesign from "@/components/grid-category";
 
 import MainNavbar from "@/components/mainNavBar";
 import { PaymentShowcase } from "@/components/payment";
