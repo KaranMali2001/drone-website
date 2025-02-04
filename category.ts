@@ -34,3 +34,15 @@ export const categories = [
     ],
   },
 ];
+export const products = [
+  { image: "", name: "Drone X1" },
+  { image: "", name: "Quadcopter Pro" },
+  { image: "", name: "Mini Drone" },
+  { image: "", name: "Camera Drone" },
+  { image: "", name: "Racing Drone" },
+  { image: "", name: "Foldable Drone" },
+  { image: "", name: "Long Range Drone" },
+  { image: "", name: "Underwater Drone" },
+  { image: "", name: "Agricultural Drone" },
+  { image: "", name: "Delivery Drone" },
+];

@@ -12,7 +12,6 @@ import TopNavbar from "@/components/topNavBar";
 export default function Home() {
   return (
     <>
-      <TopNavbar />
       <MainNavbar />
       <DynamicShowcase />
       <CardsDesign />
