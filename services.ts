@@ -1,3 +1,4 @@
+//make It dyanmic , take from backend
 export const services = [
   {
     name: "Laser Cutting",
@@ -20,19 +21,41 @@ export const services = [
     name: "Routing",
     subcategories: [
       {
-        name: "CNC Routing",
+        name: "Wood Routing",
         description: "Computer-controlled cutting for complex shapes",
       },
       {
-        name: "Manual Routing",
+        name: "Glass Routing",
         description: "Skilled hand-guided routing for custom projects",
+      },
+      {
+        name: "carbon Fiber Routing",
+        description: "Precision routing for various metals",
       },
     ],
   },
   {
     name: "3D Printing",
-    description: "Additive manufacturing for rapid prototyping and production",
+    subcategories: [
+      {
+        name: "TPU",
+        description: "Computer-controlled cutting for complex shapes",
+      },
+      {
+        name: "PETG",
+        description: "Skilled hand-guided routing for custom projects",
+      },
+      {
+        name: "PLA",
+        description: "Precision routing for various metals",
+      },
+      {
+        name: "SLA",
+        description: "Precision routing for various metals",
+      },
+    ],
   },
+
   {
     name: "Mechanical Machining",
     description: "Precision engineering for mechanical components",

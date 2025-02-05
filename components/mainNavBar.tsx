@@ -30,6 +30,12 @@ export default function MainNavbar() {
           >
             Products
           </Link>
+          <Link
+            href="/login"
+            className="text-white hover:text-orange-500 transition-colors"
+          >
+            Login
+          </Link>
         </nav>
         <form onSubmit={handleSearch} className="flex-1 max-w-2xl">
           <div className="relative">
